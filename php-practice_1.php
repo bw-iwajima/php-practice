@@ -28,6 +28,7 @@ $deviceの値が「mac」だったら、「使用OSは、macです。」と表�
 $deviceの値が上記2つ以外だったら、「どちらでもありません。」と表示。
 但し、ifとelseのみを使用して処理を作成してください。（elseif は使わないでください）*/
 
+/*
 $device = 'windows';
 
 if ($device === "windows" || $device === "mac"){
@@ -42,6 +43,19 @@ if ($device === "windows" || $device === "mac"){
     echo 'どちらでもありません。';
     
 }
+*/
+//ifとelseは1回のみ
+$device = 'mac';
+
+if ($device === "windows" || $device === "mac"){
+
+    echo ($device === "windows") ? '使用OSはwindowsです。' : '使用OSはmacです。';
+    
+}else{
+    echo 'どちらでもありません。';
+    
+}
+
 
 
 /* Q5 条件分岐-2 三項演算子
@@ -98,6 +112,7 @@ if文については、elseifは使用せずifとelseのみで処理を記述。
 
 $kanto ['香川県']='高松市';
 $kanto ['兵庫県']='神戸市'; 
+/*
 $kantonly =['東京都','神奈川県','千葉県','埼玉県','栃木県','群馬県','茨城県'];
 
 foreach($kanto as $prefecture =>$capital){
@@ -107,6 +122,52 @@ foreach($kanto as $prefecture =>$capital){
     echo $prefecture  ."は関東地方ではありません。\n";
   }
 }
+*/
+
+//新しく変数を作らない場合　1
+foreach($kanto as $prefecture =>$capital){
+  if(in_array($prefecture,['東京都','神奈川県','千葉県','埼玉県','栃木県','群馬県','茨城県']))
+  {
+    echo $prefecture ."の県庁所在地は、" .$capital ."です。\n";
+  }else{
+    echo $prefecture  ."は関東地方ではありません。\n";
+  }
+}
+//新しく変数を追加しない場合　2
+foreach($kanto as $prefecture =>$capital){
+  if($prefecture ==='東京都'||$prefecture ==='神奈川県'||
+    $prefecture ==='千葉県'||$prefecture ==='埼玉県'||
+    $prefecture ==='栃木県'||$prefecture ==='群馬県'||
+    $prefecture ==='茨城県')
+  {
+    echo $prefecture ."の県庁所在地は、" .$capital ."です。\n";
+  }else{
+    echo $prefecture  ."は関東地方ではありません。\n";
+  }
+}
+
+
+/*
+foreach($kanto as $prefecture =>$capital){
+  if($prefecture !=='香川県'&& $prefecture !=='兵庫県')
+  {
+    echo $prefecture ."の県庁所在地は、" .$capital ."です。\n";
+  }else{
+    echo $prefecture  ."は関東地方ではありません。\n";
+  }
+}
+  */
+
+foreach($kanto as $prefecture =>$capital)
+{
+if(in_array($prefecture,['東京都','神奈川県','千葉県','埼玉県','栃木県','群馬県','茨城県']))
+  {
+    echo $prefecture ."の県庁所在地は、" .$capital ."です。\n";
+  }else{
+    echo $prefecture  ."は関東地方ではありません。\n";
+  }
+}
+
 
 
 /* Q10 関数-1
